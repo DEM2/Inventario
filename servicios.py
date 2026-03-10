@@ -31,3 +31,4 @@ def eliminar_producto (nombre):
             inventario.remove(producto)
             return "el producto ha sido eliminado"
      return "producto no encontrado"
+
