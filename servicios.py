@@ -6,7 +6,7 @@ def agregar_producto(nombre, precio, cantidad):
         'precio': precio,
         'cantidad': cantidad
     })
-    return
+    return "Producto agregado"
 
 def mostrar_inventario():
     print(inventario)
