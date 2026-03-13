@@ -1,34 +1,41 @@
+from validations import get_non_empty_text,get_positive_number
 
+def  record_sales (inventory):
 
-def agregar_producto(inventario, nombre, precio, cantidad):
-    inventario.append ({
-        'nombre': nombre,
-        'precio': precio,
-        'cantidad': cantidad
-    })
-    return "Producto agregado"
+    product = get_non_empty_text("\n Enter the product name: ")
+    price = get_positive_number ("\n Enter the price per unit: ")
+    quantity= get_positive_number("\n How many units?: ")
+                
+    inventory.append({
+        'Product': product,
+        'Price_per_unit': price,
+        'Amount': quantity
+        })
+            
+    print("\n Sale recorded successfully ✅")
 
-def mostrar_inventario(inventario):
-    print(inventario)
+def mostrar_inventario(inventory):
+    print(inventory)
 
-def buscar_producto(inventario, nombre) :
-    for producto in inventario:
-        if producto['nombre']== nombre :
+def buscar_producto(inventory, message) :
+    name= get_non_empty_text(message)
+    for producto in inventory:
+        if producto['Product']==name:
             return producto
     return None
 
-def actualizar_producto(inventario, nombre, nuevo_precio=None, nueva_cantidad=None):
-    for producto in inventario:
-        if producto['nombre']== nombre :
-            if nuevo_precio!= None : producto['precio']= nuevo_precio
-            if nueva_cantidad!= None: producto['cantidad']= nueva_cantidad
-            return("producto actualizado", producto)
-    return "producto no encontrado"
+def update_product(inventory, name, price=0, quantity=0):
+    for product in inventory:
+        if product['Product']== name :
+            product['Price_per_unit']= price
+            product['Amount']= quantity
+            return("update successfully ✅", product)
+    return "Any product was found"
 
-def eliminar_producto (inventario, nombre):
-     for producto in inventario:
-        if producto['nombre'] == nombre :
-            inventario.remove(producto)
-            return "el producto ha sido eliminado"
-     return "producto no encontrado"
+def delete_product (inventory, name):
+     for product in inventory:
+        if product['Product'] == name :
+            inventory.remove(product)
+            return "The product was remove"
+     return "Any product was found"
 

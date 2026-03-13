@@ -1,5 +1,6 @@
 from archivos import guardar_csv
-from servicios import agregar_producto, mostrar_inventario, buscar_producto, actualizar_producto,eliminar_producto
+from servicios import record_sales, mostrar_inventario, buscar_producto, update_product, delete_product
+from validations import  get_non_empty_text, get_positive_number
 
 """try:
    df=pd.read_csv('datos.csv')
@@ -9,71 +10,62 @@ except FileNotFoundError:
 df.to_csv('datos.csv', index=False)
 
 print(df)"""
-inventario=[]
 
-while True :
+inventory=[]
+to_continue = True
+
+while to_continue :
 
  print ("-"* 30)
- print ("      SISTEMA DE INVENTARIO")
+ print ("      INVENTORY SYSTEM")
  print ("-"* 30)
 
- print("1. Agregar")
- print("2. Mostrar")
- print("3. Buscar")
- print("4. Actualizar")
- print("5. Eliminar")
- print("6. Estadísticas")
- print("7. Guardar CSV")
+ print("1. Register")
+ print("2. Viw Inventory")
+ print("3. Search Product")
+ print("4. Update Product Information")
+ print("5. Delete a record")
+ print("6. Statistics")
+ print("7. Save CSV")
  print("8. Cargar CSV")
- print("9. Salir")
+ print("9. Exit")
 
  try:
-     opcion = int(input("\n Ingresa la opcion del menu: "))
+     opcion = int(get_positive_number("\n Select a menu option: "))
      if opcion in range(1,10):
         match opcion:
              case 1:
-       
-                nombre = input("\n Escriba el nombre del producto: ")
-                try:
-
-                   precio = float(input("\n Escriba el precio: "))
-                   cantidad = float(input("\n Escriba la cantidad del producto: "))
-                   if precio<0 or cantidad<0: 
-                      print("\n La cantidad o el precio asignado debe ser un nummero valido")
-                   else :
-                      agregar_producto(inventario, nombre , precio, cantidad)
-
-                except ValueError :
-                 print("La informacion digitada es invalida ")
+              record_sales(inventory) 
              case 2: 
-              mostrar_inventario(inventario)
+              mostrar_inventario(inventory)
              case 3:
-               try:
-                  nombre= input("\n ¿Que producto deseas buscar?: ")
-                  if buscar_producto(inventario, nombre) != None :
-                      print("\n {producto}")
+   
+                  result= buscar_producto(inventory, "\n ¿What product are you looking for?: ")
+                  if  result != None :
+                      print(f"\n This is the information about your search: {result}")
                   else:
-                     print("\nNo se encontro informacion")
-               except ValueError :
-                 print("")
+                     print("\n No information was found")
+
              case 4:
-                  nombre= input("\n Ingresar el nombre del producto a actualizar: ")
-                  nuevo_precio = input("\n Ingresar el precio nuevo: ")
-                  nueva_cantidad = input("\n Ingresar la cantidad nueva del producto: ")
-                  actualizar_producto(inventario, nuevo_precio, nueva_cantidad)
+                  
+                  name= get_non_empty_text("\n Enter the product name: ")
+                  new_price = get_positive_number("\n Enter the new price per unit: ")
+                  new_quantity = get_positive_number("\n How many units?: ")
+                  print(update_product(inventory,name, new_price, new_quantity))
              case 5:
-              nombre = input("\n Nombre del producto a eliminar: ")
-              eliminar_producto(nombre)
+              name = get_non_empty_text("\n Name of the product to be remove: ")
+              print(delete_product(inventory, name))
              case 7: 
-              guardar_csv(inventario)
+              print()
              case 9:
-              print("SECCION CERRADA")
+              print("Close seccion ")
+              to_continue=False
               break
 
      else: 
-        print("la opcion elegida no es valida")
+        print("The option is invalid ")
      
  except ValueError :
-    print("Valor invalido")
+    print("Invalid value")
 
  
