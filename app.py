@@ -27,7 +27,7 @@ while to_continue :
  print("5. Delete a record")
  print("6. Statistics")
  print("7. Save CSV")
- print("8. Cargar CSV")
+ print("8. Upload CSV")
  print("9. Exit")
 
  try:
@@ -58,7 +58,7 @@ while to_continue :
              case 7: 
               print()
              case 9:
-              print("Close seccion ")
+              print("closing section ")
               to_continue=False
               break
 
