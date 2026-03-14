@@ -8,16 +8,16 @@ def  record_sales (inventory):
                 
     inventory.append({
         'Product': product,
-        'Price_per_unit': price,
+        'Price_per_unit': float(price),
         'Amount': quantity
         })
             
     print("\n Sale recorded successfully ✅")
 
-def mostrar_inventario(inventory):
+def display(inventory):
     print(inventory)
 
-def buscar_producto(inventory, message) :
+def search(inventory, message) :
     name= get_non_empty_text(message)
     for producto in inventory:
         if producto['Product']==name:
