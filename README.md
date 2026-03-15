@@ -1,4 +1,4 @@
 # Inventory System
 
 ## FlowChart
-![Flowchart](Images\Inventory.png)
+![Flowchart](Images/Inventory.png)
