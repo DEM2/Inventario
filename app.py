@@ -1,8 +1,9 @@
-from csv_manager import save_csv
+from csv_manager import save_csv, uploap
 from processes import record_sales, display, search, update_product, delete_product
 from validations import  get_non_empty_text, get_positive_number
 
 inventory=[]
+p=[]
 to_continue = True
 
 while to_continue :
@@ -52,6 +53,11 @@ while to_continue :
               print(delete_product(inventory, name))
              case 7: 
               print(save_csv(inventory, "inventory.csv"))
+             case 8:
+              #option=input("\nWould you like to overwrite the current inventory? Y for yes o  N for no: ").strip().upper()
+              p, contador=uploap("new_inventory.csv")
+              print("\n la cantidad de filas invalidas es: ",contador,"\n")
+              print(p)
              case 9:
               print("\nClosing section... ")
               to_continue=False
