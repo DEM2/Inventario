@@ -15,7 +15,7 @@ def save_csv(inventory, route, header=True):
    except FileExistsError :
       print("The csv file could not be saved")
 
-def uploap(route):
+def upload(route):
    invalid_rows=0
    csv_upload=[]
    try:

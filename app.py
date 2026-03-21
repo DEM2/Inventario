@@ -1,9 +1,7 @@
-from csv_manager import save_csv, uploap
-from processes import record_sales, display, search, update_product, delete_product
-from validations import  get_non_empty_text, get_positive_number
+from menu import menu
+from validations import get_positive_number
 
 inventory=[]
-p=[]
 to_continue = True
 
 while to_continue :
@@ -24,45 +22,11 @@ while to_continue :
 
  try:
      opcion = int(get_positive_number("\n Select a menu option: "))
-     if opcion in range(1,10):
-        match opcion:
-             case 1:
-              record_sales(inventory) 
-             case 2:
-              if not inventory:
-                 print("The inventory is empty")
-              else: 
-                 display(inventory)
-             case 3:
-   
-               result= search(inventory, "\n ¿What product are you looking for?: ")
-               if  result != None :
-                   print(f"\n This is the information about your search: {result}")
-               else:
-                   print("\n No information was found")
-
-             case 4:
-                  
-                  name= get_non_empty_text("\n Enter the product name: ")
-                  new_price = get_positive_number("\n Enter the new price per unit: ")
-                  new_quantity = get_positive_number("\n How many units?: ")
-                  print(update_product(inventory,name, new_price, new_quantity))
-                  
-             case 5:
-              name = get_non_empty_text("\n Name of the product to be remove: ")
-              print(delete_product(inventory, name))
-             case 7: 
-              print(save_csv(inventory, "inventory.csv"))
-             case 8:
-              #option=input("\nWould you like to overwrite the current inventory? Y for yes o  N for no: ").strip().upper()
-              p, contador=uploap("new_inventory.csv")
-              print("\n la cantidad de filas invalidas es: ",contador,"\n")
-              print(p)
-             case 9:
-              print("\nClosing section... ")
-              to_continue=False
-              break
-
+     if opcion in menu:
+        menu[opcion](inventory)
+     elif opcion==9:
+        print("\nClosing section... ")
+        to_continue=False
      else: 
         print("The option is invalid ")
      
