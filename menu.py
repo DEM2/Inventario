@@ -6,6 +6,7 @@ menu={
    3:option_3,
    4:option_4,
    5:option_5,
+   6:option_6,
    7:option_7,
    8:option_8
 }

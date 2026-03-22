@@ -1,5 +1,8 @@
 import csv
 
+# This function is used to create a file if it does not exist,
+# or otherwise save the inventory list to a CSV file in a specified location. 
+
 def save_csv(inventory, route, header=True):
    if not inventory: 
       print("No information has been saved")
@@ -15,6 +18,7 @@ def save_csv(inventory, route, header=True):
    except FileExistsError :
       print("The csv file could not be saved")
 
+# this feature is used to upload a csv file to a specific location 
 def upload(route):
    invalid_rows=0
    csv_upload=[]
