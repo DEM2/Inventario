@@ -49,26 +49,29 @@ def option_6(inventory):
 
 # option : Save CSV"
 def option_7(inventory):
+      # By default, The inventory.csv file is where I store the information when the user selects the option 
       print(save_csv(inventory, "inventory.csv"))
 
 # option : Upload CSV
 def option_8(inventory):
+    # By default, The new_inventory.csv file is where the information I want to upload is located 
     imported_inventory, contador = upload("new_inventory.csv")
      
     validate = True
     while validate:
         option = input(
-        "\n Would you like to overwrite the current inventory? Y for yes or N for no: "
+        "\n If you want to overwrite the inventory information with the new data, type 'R'; if, on the other hand, you want to merge the information, type 'F':  "
          ).strip().upper()
-        if option in ["Y", "N"]:
+        if option in ["R", "F"]:
             validate=False
         else:
-            print("\n Please enter Y or N")
+            print("\n Please enter R or F")
     
-    if option == "Y":
+    if option == "R":
         inventory.clear()
         inventory.extend(imported_inventory)
-        
+        print("\nThe replacement was successfully completed ✅")
+
     else:
         inventory_index = {item['Product']: item for item in inventory}
 
@@ -80,6 +83,9 @@ def option_8(inventory):
                 inventory_index[product]['Amount'] = item['Amount']
             else:
                 inventory.append(item)
+        print("\nThe data was successfully merged ✅")
                 
-    print("\n The data has been uploaded successfully ✅")
     print(f" The number of invalid rows was: {contador} \n")
+    print("*"*30)
+    option_2(inventory)
+    

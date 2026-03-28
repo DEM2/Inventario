@@ -17,7 +17,7 @@ def  record_sales (inventory):
 
 # This feature allows you to view all records 
 def display(inventory):
-    print("\n INVENTARIO")
+    print("\n INVENTORY")
     print("="*20)
     for product in inventory:
         print(f" Product: {product['Product']} | Price per unit: {product['Price_per_unit']} | Amount: {product['Amount']}")
