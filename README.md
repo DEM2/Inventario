@@ -24,8 +24,18 @@ The project is organized into the following files:
 - **csv_manager.py**  
   Manages data persistence by handling reading from and writing to CSV files.
 
+## Sample Data
 
+| Product | Price | Quantity |
+|--------|------|----------|
+| Apple  | 2000 | 10       |
+| Milk   | 3000 | 5        |
 
 
 ## FlowChart
 ![Flowchart](Images/Inventory.png)
+
+## Author
+
+Daniel Mendoza  
+Systems Engineer | Aspiring Software Developer
