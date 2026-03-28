@@ -26,7 +26,7 @@ The project is organized into the following files:
 
 ## Sample Data
 
-| Product | Price | Quantity |
+| Product | Price per Unit | Amount |
 |--------|------|----------|
 | Apple  | 2000 | 10       |
 | Milk   | 3000 | 5        |
